@@ -10,6 +10,20 @@ from keras.preprocessing.image_dataset import load_image
 from opengpt_user import contains_airplane
 
 
+def search_for_airplane_images():
+    # Use a search engine to search for airplane images
+    query = "airplane images"
+    search_url = "https://www.google.com/search?q={}&tbm=isch".format(query)
+    response = requests.get(search_url)
+
+    # Parse the search results
+    results = []
+    for result in response.json()["items"]:
+        image_url = result["link"]
+        results.append(image_url)
+
+    return results
+
 def create_model():
     # Create a neural network using TensorFlow
     model1 = tf.keras.Sequential()
