@@ -9,7 +9,16 @@ from keras.preprocessing.image_dataset import load_image
 
 from opengpt_user import contains_airplane
 
+def preprocess_image(image):
+    # Resize the image to match the input size of the neural network
+    image = cv2.resize(image, (224, 224))
 
+    # Normalize the image to improve the performance of the neural network
+    image = image / 255.0
+    image = image - 0.5
+    image = image * 2.0
+
+    return image
 def search_for_airplane_images():
     # Use a search engine to search for airplane images
     query = "airplane images"
