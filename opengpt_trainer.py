@@ -65,3 +65,32 @@ def train():
     
     # Save the trained model
     model.save("airplane_recognition_model.h5")
+  def create_model():
+    # Create a neural network using TensorFlow
+    model = tf.keras.Sequential()
+    model.add(tf.keras.layers.Conv2D(32, (3, 3), input_shape=(224, 224, 3)))
+    model.add(tf.keras.layers.Activation('relu'))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(tf.keras.layers.Conv2D(32, (3, 3)))
+    model.add(tf.keras.layers.Activation('relu'))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(tf.keras.layers.Conv2D(64, (3, 3)))
+    model.add(tf.keras.layers.Activation('relu'))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(64))
+    model.add(tf.keras.layers.Activation('relu'))
+    model.add(tf.keras.layers.Dropout(0.5))
+    model.add(tf.keras.layers.Dense(1))
+    model.add(tf.keras.layers.Activation('sigmoid'))
+    
+    # Compile the model
+    model.compile(loss='binary_crossentropy',
+                  optimizer='rmsprop',
+                  metrics=['accuracy'])
+    
+    return model
+
