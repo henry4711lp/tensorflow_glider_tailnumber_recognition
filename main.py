@@ -24,9 +24,9 @@ def demo():
         ]
     ]
     print("Local Stream!: ")
-    #print(image_recognition.image_recognition(images))
-    print("Webcam Stream!: ")
-    print(webcam_analysis.main())
+    print(image_recognition.image_recognition(images))
+    #print("Webcam Stream!: ")
+    #print(webcam_analysis.main())
     return 0;
 
 

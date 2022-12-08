@@ -3,6 +3,8 @@ import tensorflow as tf
 import cv2 # for capturing video frames
 import tkinter as tk # for the GUI
 
+from PIL import ImageTk
+
 # Load the trained neural network
 model = tf.keras.models.load_model("airplane_recognition_model.h5")
 
@@ -39,7 +41,6 @@ while True:
 
     # Convert the frame to a Tkinter-compatible image
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame = Image.fromarray(frame)
     frame = ImageTk.PhotoImage(frame)
 
     # Display the frame in the GUI
